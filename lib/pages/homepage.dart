@@ -1,25 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:frivia_flutter/provider/homepage_provider.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
   double? _deviceHeight, _deviceWidth;
+
+  HomePageProvider? _pageProvider;
 
   @override
   Widget build(BuildContext context) {
     _deviceHeight = MediaQuery.of(context).size.height;
     _deviceWidth = MediaQuery.of(context).size.width;
-    return _buildUI();
+    return ChangeNotifierProvider(
+      create: (_context) => HomePageProvider(context: context),
+      child: _buildUI(),
+    );
   }
 
   Widget _buildUI() {
-    return Scaffold(
-      body: SafeArea(
-          child: Container(
-        padding: EdgeInsets.symmetric(
-          horizontal: _deviceWidth! * 0.15,
-        ),
-        child: _gameUI(),
-      )),
-    );
+    return Builder(builder: (_context) {
+      _pageProvider = _context.watch<HomePageProvider>();
+      return Scaffold(
+        body: SafeArea(
+            child: Container(
+          padding: EdgeInsets.symmetric(
+            horizontal: _deviceWidth! * 0.15,
+          ),
+          child: _gameUI(),
+        )),
+      );
+    });
   }
 
   Widget _gameUI() {
@@ -57,7 +67,7 @@ class HomePage extends StatelessWidget {
       minWidth: _deviceWidth! * 0.80,
       height: _deviceHeight! * 0.12,
       child: const Text(
-        "TRUE",
+        "True",
         style: TextStyle(fontSize: 25, fontWeight: FontWeight.w700),
       ),
     );
@@ -70,7 +80,7 @@ class HomePage extends StatelessWidget {
       minWidth: _deviceWidth! * 0.80,
       height: _deviceHeight! * 0.12,
       child: const Text(
-        "FALSE",
+        "False",
         style: TextStyle(fontSize: 25, fontWeight: FontWeight.w700),
       ),
     );
