@@ -7,7 +7,8 @@ class HomePageProvider extends ChangeNotifier {
   final Dio _dio = Dio();
   final int _maxquesstions = 10;
 
-  List? questions;
+  List? questions; // To hold the questions
+  int _currentquestionsCount = 0;
 
   BuildContext context;
   HomePageProvider({required this.context}) {
@@ -29,6 +30,11 @@ class HomePageProvider extends ChangeNotifier {
       _response.toString(),
     );
     questions = _data["results"];
+    notifyListeners();
     print(_data);
+  }
+
+  String getCurrentQuestionsText() {
+    return questions![_currentquestionsCount]["question"];
   }
 }

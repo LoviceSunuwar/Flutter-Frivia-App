@@ -20,15 +20,23 @@ class HomePage extends StatelessWidget {
   Widget _buildUI() {
     return Builder(builder: (_context) {
       _pageProvider = _context.watch<HomePageProvider>();
-      return Scaffold(
-        body: SafeArea(
-            child: Container(
-          padding: EdgeInsets.symmetric(
-            horizontal: _deviceWidth! * 0.15,
+      if (_pageProvider!.questions != null) {
+        return Scaffold(
+          body: SafeArea(
+              child: Container(
+            padding: EdgeInsets.symmetric(
+              horizontal: _deviceWidth! * 0.15,
+            ),
+            child: _gameUI(),
+          )),
+        );
+      } else {
+        return Center(
+          child: CircularProgressIndicator(
+            color: Colors.blue,
           ),
-          child: _gameUI(),
-        )),
-      );
+        );
+      }
     });
   }
 
@@ -53,9 +61,9 @@ class HomePage extends StatelessWidget {
   }
 
   Widget _questionText() {
-    return const Text(
-      "Nothing intresting",
-      style: TextStyle(
+    return Text(
+      _pageProvider!.getCurrentQuestionsText(),
+      style: const TextStyle(
           color: Colors.black, fontSize: 25, fontWeight: FontWeight.w500),
     );
   }
