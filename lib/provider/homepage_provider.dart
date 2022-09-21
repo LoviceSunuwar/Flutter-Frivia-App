@@ -31,7 +31,7 @@ class HomePageProvider extends ChangeNotifier {
     );
     questions = _data["results"];
     notifyListeners();
-    print(_data);
+    //print(_data); This is to check the data on console
   }
 
 //Listd the questions together
@@ -43,7 +43,20 @@ class HomePageProvider extends ChangeNotifier {
     bool isCorrect =
         questions![_currentquestionsCount]["correct_answer"] == _answer;
     _currentquestionsCount++;
-    print(isCorrect ? "Correct" : "Incorrect");
+    showDialog(
+        context: context,
+        builder: (BuildContext _context) {
+          return AlertDialog(
+              backgroundColor: isCorrect ? Colors.green : Colors.red,
+              title: Icon(
+                isCorrect ? Icons.check_circle : Icons.cancel_sharp,
+                color: Colors.white,
+              ));
+        });
+
+    await Future.delayed(const Duration(seconds: 2));
+    Navigator.pop(context);
+    // print(isCorrect ? "Correct" : "Incorrect");
     notifyListeners();
   }
 }
