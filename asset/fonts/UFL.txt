@@ -22,7 +22,7 @@ include source files, build scripts and documentation.
 as received under this licence.
 
 "Modified Version" refers to any derivative made by adding to, deleting,
-or substituting -- in part or in whole -- any of the components of the
+or substituting -- in part '../../assets/fonts'or in whole -- any of the components of the
 Original Version, by changing formats or by porting the Font Software to
 a new environment.
 
@@ -72,7 +72,7 @@ Modified Version, except (i) as required by this licence, (ii) to
 acknowledge the contribution(s) of the Copyright Holder(s) or (iii) with
 their explicit written permission.
 
-4) The Font Software, modified or unmodified, in part or in whole, must
+4) The Font Software, modified or unmodified, in part '../../assets/fonts'or in whole, must
 be distributed entirely under this licence, and must not be distributed
 under any other licence. The requirement for fonts to remain under this
 licence does not affect any document created using the Font Software,

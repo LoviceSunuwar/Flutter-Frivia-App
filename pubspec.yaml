@@ -80,7 +80,7 @@ flutter:
   fonts:
     - family: Oswald
       fonts:
-         - asset: fonts/Ubuntu-Regular.ttf
+         - asset: asset/fonts/Ubuntu-Regular.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
