@@ -34,7 +34,16 @@ class HomePageProvider extends ChangeNotifier {
     print(_data);
   }
 
+//Listd the questions together
   String getCurrentQuestionsText() {
     return questions![_currentquestionsCount]["question"];
+  }
+
+  void answerQuestion(String _answer) async {
+    bool isCorrect =
+        questions![_currentquestionsCount]["correct_answer"] == _answer;
+    _currentquestionsCount++;
+    print(isCorrect ? "Correct" : "Incorrect");
+    notifyListeners();
   }
 }
