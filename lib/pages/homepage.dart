@@ -15,7 +15,7 @@ class HomePage extends StatelessWidget {
       body: SafeArea(
           child: Container(
         padding: EdgeInsets.symmetric(
-          horizontal: _deviceHeight! * 0.15,
+          horizontal: _deviceWidth! * 0.15,
         ),
         child: _gameUI(),
       )),
@@ -26,7 +26,19 @@ class HomePage extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       mainAxisSize: MainAxisSize.max,
-      children: [_questionText()],
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        _questionText(),
+        Column(
+          children: [
+            _trueButton(),
+            SizedBox(
+              height: _deviceHeight! * 0.05,
+            ),
+            _falseButton(),
+          ],
+        )
+      ],
     );
   }
 
@@ -35,6 +47,32 @@ class HomePage extends StatelessWidget {
       "Nothing intresting",
       style: TextStyle(
           color: Colors.black, fontSize: 25, fontWeight: FontWeight.w500),
+    );
+  }
+
+  Widget _trueButton() {
+    return MaterialButton(
+      onPressed: () {},
+      color: Colors.green,
+      minWidth: _deviceWidth! * 0.80,
+      height: _deviceHeight! * 0.12,
+      child: const Text(
+        "TRUE",
+        style: TextStyle(fontSize: 25, fontWeight: FontWeight.w700),
+      ),
+    );
+  }
+
+  Widget _falseButton() {
+    return MaterialButton(
+      onPressed: () {},
+      color: Colors.red,
+      minWidth: _deviceWidth! * 0.80,
+      height: _deviceHeight! * 0.12,
+      child: const Text(
+        "FALSE",
+        style: TextStyle(fontSize: 25, fontWeight: FontWeight.w700),
+      ),
     );
   }
 }
